@@ -123,13 +123,12 @@ func initProject(name string) error {
 		oldImport = "github.com/xiaohangshuhub/go-workit"
 	}
 
-	cmdPath := filepath.Join(name, "cmd")
+	cmdPath := filepath.Join(name, "")
 	newImport := fmt.Sprintf("%s", name)
 	err := replaceCmdImports(cmdPath, oldImport, newImport)
 	if err != nil {
 		return fmt.Errorf("替换 import 失败: %v", err)
 	}
-
 	// 安装依赖
 	fmt.Println("➤ 安装依赖...")
 	cmd = exec.Command("go", "mod", "tidy")
